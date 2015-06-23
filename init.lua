@@ -17,14 +17,15 @@
 -- Darren Grey
 -- http://gruesomegames.com
 
-name = "Run from the Shadow"
-long_name = "Run from the Shadow"
-short_name = "shadow"
-author = { "Darren Grey", "darrenjohngrey@hotmail.com" }
-homepage = "http://gruesomegames.com"
-version = {1,0,0}
-engine = {0,9,34,"te4"}
+name = "Dictionary Dungeon"
+long_name = "Dictionary Dungeon alpha"
+short_name = "dictionary"
+author = { "Quinten Konyn", "crystalsolenoid@gmail.com" }
+homepage = "n/a"
+version = {0,0,1}
+-- engine = {0,9,34,"te4"}
+engine = {1,2,5,"te4"}
 description = [[
-Can you escape from the shadow that plagues your every step?
+Delve into the Dictionary Dungeon to retrieve the letter Z.
 ]]
 starter = "mod.load"
