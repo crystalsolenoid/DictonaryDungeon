@@ -40,7 +40,7 @@ You can view some info about your character and save the data to file, or abando
 	
 	if game.player.win then stuff = [[#GREEN#Congratulations!#LAST#  
 
-You have defeated the Shadow and retained your sanity.  You open your eyes, released from the shackles of your nightmares, and step out into the world unfettered by the burdens of guilt and the pains of an overzealous conscience.  You are truly free.
+You have defeated the Shadow and retained your health.  You open your eyes, released from the shackles of your nightmares, and step out into the world unfettered by the burdens of guilt and the pains of an overzealous conscience.  You are truly free.
 
 What happened in the past was not really your fault, you tell yourself.  You can forget it all - there's no point dwelling on it now.  Besides, you won't let it happen again.
 

@@ -87,56 +87,56 @@ function _M:act()
 		end
 	end
 	
-	if self.shadowcount > 0 then
-	   self.shadowcount = self.shadowcount - 1
-	   if self.shadowcount == 0 then
-			-- The Shadow will get you!
-			-- Find space
-			local x, y = util.findFreeGrid(self.x, self.y, 1, true, {[Map.ACTOR]=true})
-			if not x then
-				self.shadowcount = 1
-			else
-				local NPC = require "mod.class.NPC"
-				local m = NPC.new{
-					type = "shadow",
-					display = "@",
-					color=colors.DARK_GREY,
-					name = "Shadow",
-					desc = "A dark shadowy shape who reaches out to snuff you from existence.",
-					ai = "dumb_talented_simple", ai_state = { talent_in=1, ai_move="move_astar", },
-					base_dam = 20 + game.player.level,
-					max_dam = 20 + game.player.level,
-					max_life = game.player.max_life * 2,
-					life = game.player.max_life * 2,
-					life_regen = 1,
-					defence = 10,
-					energy = {mod = 0.5},
-					sight = 10,
-					lite = 5,
-				}
-				m.on_added_to_level = nil
-				local Particles = require "engine.Particles"
-				m.particle = m:addParticles(Particles.new("ultrashield", 1, {rm=0, rM=0, gm=0, gM=0, bm=10, bM=100, am=70, aM=180, radius=0.8, density=40, life=14, instop=20}))
+	-- if self.shadowcount > 0 then
+	--    self.shadowcount = self.shadowcount - 1
+	--    if self.shadowcount == 0 then
+	-- 		-- The Shadow will get you!
+	-- 		-- Find space
+	-- 		local x, y = util.findFreeGrid(self.x, self.y, 1, true, {[Map.ACTOR]=true})
+	-- 		if not x then
+	-- 			self.shadowcount = 1
+	-- 		else
+	-- 			local NPC = require "mod.class.NPC"
+	-- 			local m = NPC.new{
+	-- 				type = "shadow",
+	-- 				display = "@",
+	-- 				color=colors.DARK_GREY,
+	-- 				name = "Shadow",
+	-- 				desc = "A dark shadowy shape who reaches out to snuff you from existence.",
+	-- 				ai = "dumb_talented_simple", ai_state = { talent_in=1, ai_move="move_astar", },
+	-- 				base_dam = 20 + game.player.level,
+	-- 				max_dam = 20 + game.player.level,
+	-- 				max_life = game.player.max_life * 2,
+	-- 				life = game.player.max_life * 2,
+	-- 				life_regen = 1,
+	-- 				defence = 10,
+	-- 				energy = {mod = 0.5},
+	-- 				sight = 10,
+	-- 				lite = 5,
+	-- 			}
+	-- 			m.on_added_to_level = nil
+	-- 			local Particles = require "engine.Particles"
+	-- 			m.particle = m:addParticles(Particles.new("ultrashield", 1, {rm=0, rM=0, gm=0, gM=0, bm=10, bM=100, am=70, aM=180, radius=0.8, density=40, life=14, instop=20}))
 				
-				m:setTarget(game.player)
-				m.energy.value = 0
-				m.forceLevelup = function() end
-				m.on_die = function()
-					self.shadowed = nil
-					self.win = true
-					self.die(self)
-				end
-				game.zone:addEntity(game.level, m, "actor", x, y)
-				game.level.map:particleEmitter(x, y, 1, "teleport")
-				game.log("#ffffff#The Shadow is here! Run, run for your life!")
-				self.shadowed = true
-			end
-	   end
-	end
+	-- 			m:setTarget(game.player)
+	-- 			m.energy.value = 0
+	-- 			m.forceLevelup = function() end
+	-- 			m.on_die = function()
+	-- 				self.shadowed = nil
+	-- 				self.win = true
+	-- 				self.die(self)
+	-- 			end
+	-- 			game.zone:addEntity(game.level, m, "actor", x, y)
+	-- 			game.level.map:particleEmitter(x, y, 1, "teleport")
+	-- 			game.log("#ffffff#The Shadow is here! Run, run for your life!")
+	-- 			self.shadowed = true
+	-- 		end
+	--    end
+	-- end
 	
 	local turn_plural = "turns"
-	if self.shadowcount == 1 then turn_plurals = "turn" end
-	if self.shadowcount > 0 then game.log("#ffff22#The Shadow is coming in %d %s!",self.shadowcount,turn_plural) end
+	-- if self.shadowcount == 1 then turn_plurals = "turn" end
+	-- if self.shadowcount > 0 then game.log("#ffff22#The Shadow is coming in %d %s!",self.shadowcount,turn_plural) end
 		
 	-- Funky shader things !
 	self:updateMainShader()
@@ -279,7 +279,7 @@ function _M:onTakeHit(value, src)
 	local ret = mod.class.Actor.onTakeHit(self, value, src)
 	if self.life < self.max_life * 0.3 then
 		local sx, sy = game.level.map:getTileToScreen(self.x, self.y)
-		game.flyers:add(sx, sy, 30, (rng.range(0,2)-1) * 0.5, 2, "LOW SANITY!", {255,0,0}, true)
+		game.flyers:add(sx, sy, 30, (rng.range(0,2)-1) * 0.5, 2, "LOW HEALTH!", {255,0,0}, true)
 	end
 	return ret
 end
@@ -314,7 +314,7 @@ function _M:levelup()
 
 	local x, y = game.level.map:getTileToScreen(self.x, self.y)
 	game.flyers:add(x, y, 80, 0.5, -2, "LEVEL UP!", {0,255,255})
-	game.log("#00ffff#Advanced to level %d - sanity and damage output increased.", self.level)
+	game.log("#00ffff#Advanced to level %d - health and damage output increased.", self.level)
 end
 
 --- Tries to get a target from the user

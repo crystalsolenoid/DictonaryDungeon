@@ -104,7 +104,7 @@ function _M:display()
    
     h = h + self.font_h +4
     
-    self:makeTexture(("Sanity: #CRIMSON#%d/%d   "):format(player.life, player.max_life), w, h, 255, 255, 255)
+    self:makeTexture(("Health: #CRIMSON#%d/%d   "):format(player.life, player.max_life), w, h, 255, 255, 255)
    
     h = h + self.font_h +4
    

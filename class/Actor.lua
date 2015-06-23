@@ -115,7 +115,7 @@ end--]]
 function _M:tooltip()
 	return ([[%s#eeeeee#%s
 Level: #00ffff#%d#eeeeee#
-Sanity: #ff0000#%d (%d%%)
+Health: #ff0000#%d (%d%%)
 #bbbbbb#%s#eeeeee#
 Damage: #ee1111#%d #eeeeee#to #ee1111#%d#eeeeee#
 Defence: #555599#%d]]):format(

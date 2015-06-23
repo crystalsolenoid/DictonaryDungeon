@@ -83,7 +83,7 @@ function _M:drawDialog(s)
 
     h = h + self.font_h
    
-	self:mouseTooltip(self.TOOLTIP_LIFE, s:drawColorStringBlended(self.font, ("#CRIMSON#Sanity:    #LAST#%d/%d"):format(player.life, player.max_life), w, h, 255, 255, 255)) h = h + self.font_h
+	self:mouseTooltip(self.TOOLTIP_LIFE, s:drawColorStringBlended(self.font, ("#CRIMSON#Health:    #LAST#%d/%d"):format(player.life, player.max_life), w, h, 255, 255, 255)) h = h + self.font_h
 	
 	h = h + self.font_h
 	self:mouseTooltip(self.TOOLTIP_DAMAGE, s:drawColorStringBlended(self.font, ("Damage: #RED#%d#LAST# to #RED#%d"):format(player.base_dam, player.max_dam), w, h, 255, 255, 255)) h = h + self.font_h
@@ -123,7 +123,7 @@ function _M:dump()
 	nl(("Defence:      %d"):format(player.defence))
 
 	nnl(("%-32s"):format(makelabel("Exp", ("%d%%"):format(100 * cur_exp / max_exp))))
-	nl(("Sanity:    %d/%d"):format(player.life, player.max_life))
+	nl(("Health:    %d/%d"):format(player.life, player.max_life))
 
 	nl()
 	nnl(("%-32s"):format(makelabel("Explored to level", (" %d"):format(game.level.level))))
