@@ -16,12 +16,12 @@
 -- http://gruesomegames.com
 
 return {
-	name = "Dark caves",
+	name = "Dictionary Dungeon",
 	short_name = "dungeon",
-	level_range = {1, 50},
+	level_range = {1, 26},
 	max_level = 2000,
 	--decay = {300, 800},
-	width = 40, height = 20,
+	width = 30, height = 15,
 	--persistent = "zone",
 	generator =  {
 		map = {
@@ -36,7 +36,7 @@ return {
 		},
 		actor = {
 			class = "engine.generator.actor.Random",
-			nb_npc = {15, 25},
+			nb_npc = {5, 25}, --range of how many are spawned on a level
 		},
 		object = {
             class = "engine.generator.object.Random",
@@ -44,13 +44,17 @@ return {
         },
 	},
 	levels =
-	{
+	{--what is this?
 	},
 	on_enter = function(lev, old_lev, newzone)
     if lev == 1 then
 		local Dialog = require("engine.ui.Dialog")
 	
-		Dialog:simpleLongPopup("Run from the Shadow", [[You are in a dark place, and something is after you.  Something terrible, a strong and vicious fiend that seeks to destroy you.  But you are not strong enough to face it... you must run!  Perhaps in the dark corners of your mind you will find the tools to defeat your enemy.
+		Dialog:simpleLongPopup("Entering the Dictionary Dungeon", [[You have failed. The legendary letter Z has been destroyed due to your short-sighted mistake.
+
+Your former colleagues at the Alphamancer Academy have vowed to excecute you unless you replace it.
+
+Go into the depths of the treacherous Dictionary Dungeon and find a new one, or die trying.
 
 Game instructions:
  Move with mouse keys or numpad.
@@ -58,8 +62,6 @@ Game instructions:
  g to pickup items, i to access inventory, > to descend stairs.
  Escape to rebind keys and other options.
  Find items in the dungeon and kill enemies to get stronger.
- 
-Beware, beware of The Shadow... it is coming.
 ]],400)
 	end
     end,
